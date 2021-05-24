@@ -8,7 +8,7 @@ class LinkedList:
                 node.next = Node(data = element)
                 node = node.next
 
-    def _repr__(self):
+    def __repr__(self):
         node = self.head
         nodes = []
         while node is not None:
@@ -23,6 +23,15 @@ class LinkedList:
             yield node
             node = node.next
 
+    def add(self, data):
+        if self.head:
+            node = self.head
+            while node.next is not None:
+                node = node.next
+            node.next = Node(data)
+        else:
+            self.head = Node(data)
+
 class Node():
     def __init__(self, data):
         self.data = data
@@ -30,13 +39,20 @@ class Node():
 
     def __repr__(self):
         return self.data
-
+"""
 first_node = Node("a")
 second_node = Node("b")
 third_node = Node("c")
 
-llist = LinkedList()
 llist.head = first_node
 first_node.next = second_node
 second_node.next = third_node
-llist
+"""
+llist = LinkedList()
+llist.add("d")
+llist.add("c")
+#print (repr(llist))
+#print(llist)
+#repr(llist)
+for element in llist:
+    print (element)
