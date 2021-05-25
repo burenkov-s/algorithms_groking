@@ -32,6 +32,41 @@ class LinkedList:
         else:
             self.head = Node(data)
 
+    def find(self,data):
+        # finds first occurence of the element
+        elem_pos = 0
+        for elem in self:
+            if elem.data == data:
+                print("Element", elem.data, "at position", elem_pos)
+                return
+            elem_pos += 1
+        print("Element not found")
+
+    def print(self):
+        #prints elements separated by "->"
+        print("List:")
+        for elem in self:
+            if elem.next is not None:
+                print(elem.data, "-> ", end='')
+            else:
+                print(elem.data)
+
+    def remove(self, data):
+        #removes first found element
+        if self.head == None:
+            print("List is empty")
+            return
+
+        if self.head.data == data:
+            self.head = self.head.next
+
+        prev_node = self.head
+        for node in self:
+            if node.data == data:
+                prev_node.next = node.next
+                return
+            prev_node = node
+
 class Node():
     def __init__(self, data):
         self.data = data
@@ -39,20 +74,30 @@ class Node():
 
     def __repr__(self):
         return self.data
-"""
-first_node = Node("a")
-second_node = Node("b")
-third_node = Node("c")
 
-llist.head = first_node
-first_node.next = second_node
-second_node.next = third_node
-"""
 llist = LinkedList()
-llist.add("d")
-llist.add("c")
-#print (repr(llist))
-#print(llist)
-#repr(llist)
-for element in llist:
-    print (element)
+#add elements for testing
+llist.add('a')
+llist.add('b')
+llist.add('c')
+#print(llist.head.next.data)
+while True:
+    print ( "1.add element to list\n"
+            "2.print list\n"
+            "3.find element in list\n"
+            "4.remove element\n"
+            "0.exit\n" )
+    menu = input()
+    if menu == '1':
+        print("Enter element:")
+        llist.add(input())
+    if menu == '2':
+        llist.print()
+    if menu == '3':
+        print("Enter element:")
+        llist.find(input())
+    if menu == '4':
+        print("Enter element:")
+        llist.remove(input())
+    if menu == '0':
+        break
