@@ -15,9 +15,23 @@ graph.add_edge(A,B)
 graph.add_edge(B,C)
 graph.add_edge(B,D)
 
+while True:
+    print ( "1.add element to graph\n"
+            "2.add edge between elements\n"
+            "3.find element in graph\n"
+            "4.print graph\n"
+            "0.exit\n" , end='')
+    menu = input()
+    if menu == "1":
+        print("Enter name of vertex to add:")
+        graph.add_vertex(Vertex(input()))
+        for vertex in graph:
+            print (vertex)
+"""
 search_queue = deque()
 search_queue += list(A.adjacent) # starting from A
 searched = []
+
 
 needed_vertex = input("Enter name of needed vertex: \n")
 
@@ -27,9 +41,6 @@ while search_queue:
         if vertex == needed_vertex:
             print("Vertex found")
         else:
-            print(vertex)
-#            search_queue += list(vertex.adjacent)
-
-            searched.append(Vertex)
-
-
+           search_queue += list(graph.get_adjacent(vertex))
+           searched.append(vertex)
+"""
